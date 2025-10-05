@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  	
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+	<PackageId>FieldTypedJsonConverter</PackageId>
+	<Authors>Josh Langs</Authors>
+	<Company />
+	<Product>FieldTypedJsonConverter</Product>
+	<Description>A JSON Converter for deserializing message types based on a field in the JSON.</Description>
+	<PackageTags>System.Text.Json; JsonConverter; Serialization; Deserialization</PackageTags>
+	<PackageProjectUrl>https://github.com/joshlangs/FieldTypedJsonConverter</PackageProjectUrl>
+	<RepositoryUrl>https://github.com/joshlangs/FieldTypedJsonConverter</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
+	<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
+
+	<Version>1.0.0</Version>
+
+  </PropertyGroup>
+
+</Project>
