@@ -12,11 +12,11 @@ public sealed class FieldTypedJsonConverter<TBase> : JsonConverter<TBase> where 
     bool Locked;
     readonly Dictionary<string, Type> ValueToType = [];
     public Type? FallbackType { get; private set; }
-    Func<TBase, string>? GetFieldValue;
+    Func<TBase, string?>? GetFieldValue;
     public bool IsValidatingFieldValue => GetFieldValue is not null;
 
     public FieldTypedJsonConverter(string fieldName) : this(fieldName, null) { }
-    public FieldTypedJsonConverter(string fieldName, Func<TBase, string>? getFieldValue)
+    public FieldTypedJsonConverter(string fieldName, Func<TBase, string?>? getFieldValue)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(fieldName);
         if (!typeof(TBase).IsAbstract)
@@ -77,7 +77,7 @@ public sealed class FieldTypedJsonConverter<TBase> : JsonConverter<TBase> where 
         }
     }
 
-    public void DoFieldValueValidation(Func<TBase, string>? getFieldValue)
+    public void DoFieldValueValidation(Func<TBase, string?>? getFieldValue)
     {
         lock (LockObject)
         {

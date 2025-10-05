@@ -2,6 +2,8 @@
 
 `FieldTypedJsonConverter` is a `JsonConverter` that allows for deserialization of objects based on a mapping from a field's value to a type.
 
+Published on NuGet as `FieldTypedJsonConverter`
+
 # The Basic Steps
 
 1. Create an abstract base class
@@ -15,7 +17,7 @@ Create your classes.  The `MessageBase` abstract class has a field `MessageType`
 ```
 abstract class MessageBase
 {
-    public string MessageType { get; init; }
+    public string? MessageType { get; init; }
 }
 
 class PingMessage : MessageBase {}
