@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Epoche;
 
-public sealed class FieldTypedJsonConverter<TBase> : JsonConverter<TBase> where TBase : class
+public class FieldTypedJsonConverter<TBase> : JsonConverter<TBase> where TBase : class
 {
     readonly string FieldName;
     readonly byte[] FieldBytes;

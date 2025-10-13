@@ -95,3 +95,34 @@ switch (msg)
 Serialization is allowed, although this converter is typically used for deserialization scenarios.
 
 Optionally, call `DoFieldValueValidation` if you want the field value to be checked according to the deserialization mapping.  Make sure to use the generic Serialize call with the base type if you want this behavior, or else the converter will not be triggered.
+
+# AOT
+
+In AOT scenarios, you may wish to derive your own pre-configured converter and use it in a `[JsonSourceGenerationOptions]` attribute.
+
+For example:
+
+```
+class PingPongConverter : FieldTypedJsonConverter<MessageBase>
+{
+    public PingPongConverter() : base("MessageType")
+    {
+        Map("Ping", typeof(PingMessage));
+        Map("Pong", typeof(PongMessage));
+    }
+}
+
+[JsonSourceGenerationOptions(Converters = [typeof(PingPongConverter)])]
+[JsonSerializable(typeof(PingMessage))]
+[JsonSerializable(typeof(PongMessage))]
+partial class PingPongGenContext : JsonSerializerContext { }
+```
+
+Deserialization should still point to the abstract base class.
+
+```
+var msg = JsonSerializer.Deserialize("{\"MessageType\": \"ping\"}", PingPongGenContext.Default.MessageBase);
+
+Console.WriteLine(msg.GetType().Name);
+// PRINTS "PingMessage"
+```
